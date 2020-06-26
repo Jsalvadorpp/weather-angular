@@ -1,1 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
+@import "./reset.scss";
+@import "~normalize.css";
+
+body {
+  padding: 20px 40px;
+}
