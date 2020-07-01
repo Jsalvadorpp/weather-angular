@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { WeatherService } from '../weather.service';
+declare const places: any;
 
 @Component({
 	selector: 'app-search-city',
@@ -8,12 +10,35 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class SearchCityComponent implements OnInit {
 	city: string;
+	weather: any = {};
 
-	constructor() {}
+	constructor(private weatherService: WeatherService) {}
 
-	ngOnInit(): void {}
+	ngOnInit(): void {
+		let placesAutocomplete = places({
+			appId: 'plMAU8Q8V4Q9',
+			apiKey: '7347392e86d2dd065a619d085b641c29',
+			container: document.querySelector('#search'),
+			templates: {
+				value: function(suggestion) {
+					return suggestion.name;
+				}
+			}
+		}).configure({
+			type: 'city',
+			aroundLatLngViaIP: false
+		});
 
-	searchCity(): void {
-		console.log(this.city);
+		placesAutocomplete.on('change', (e) => {
+			let city = e.suggestion.name;
+			this.searchCity(city);
+		});
+	}
+
+	searchCity(city: string = this.city): void {
+		this.weatherService.getCurrent(city).subscribe((data) => {
+			this.weather = data;
+			console.log(this.weather);
+		});
 	}
 }

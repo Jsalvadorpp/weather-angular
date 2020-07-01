@@ -1,7 +1,13 @@
-<form (ngSubmit)='searchCity()'>
-  <div class='input-wrapper'>
-    <input type='text' placeholder="Enter city" name='city' [(ngModel)]='city'>
-    <button mat-icon-button type='sumbit'>
+<form (ngSubmit)="searchCity()">
+  <div class="input-wrapper">
+    <input
+      type="text"
+      id="search"
+      placeholder="Enter city"
+      name="city"
+      [(ngModel)]="city"
+    />
+    <button mat-icon-button type="sumbit">
       <mat-icon>search</mat-icon>
     </button>
   </div>
