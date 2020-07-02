@@ -12,9 +12,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SearchCityComponent } from './search-city/search-city.component';
 import { WeatherService } from './weather.service';
+import { CurrentWeatherComponent } from './current-weather/current-weather.component';
 
 @NgModule({
-	declarations: [ AppComponent, SearchCityComponent ],
+	declarations: [ AppComponent, SearchCityComponent, CurrentWeatherComponent ],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
