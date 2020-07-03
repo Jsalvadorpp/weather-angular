@@ -13,21 +13,22 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { SearchCityComponent } from './search-city/search-city.component';
 import { WeatherService } from './weather.service';
 import { CurrentWeatherComponent } from './current-weather/current-weather.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
-	declarations: [ AppComponent, SearchCityComponent, CurrentWeatherComponent ],
-	imports: [
-		BrowserModule,
-		AppRoutingModule,
-		BrowserAnimationsModule,
-		FlexLayoutModule,
-		MatInputModule,
-		MatIconModule,
-		MatButtonModule,
-		FormsModule,
-		HttpClientModule
-	],
-	providers: [ WeatherService ],
-	bootstrap: [ AppComponent ]
+  declarations: [AppComponent, SearchCityComponent, CurrentWeatherComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    FlexLayoutModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule,
+    FormsModule,
+    HttpClientModule,
+  ],
+  providers: [WeatherService, DatePipe],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

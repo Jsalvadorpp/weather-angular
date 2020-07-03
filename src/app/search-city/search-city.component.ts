@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { WeatherService } from '../weather.service';
+import { Output, EventEmitter } from '@angular/core';
 declare const places: any;
 
 @Component({
@@ -10,7 +11,8 @@ declare const places: any;
 })
 export class SearchCityComponent implements OnInit {
 	city: string;
-	weather: any = {};
+	weather: any = undefined;
+	@Output() dataFromWeatherApi = new EventEmitter();
 
 	constructor(private weatherService: WeatherService) {}
 
@@ -39,6 +41,7 @@ export class SearchCityComponent implements OnInit {
 		this.weatherService.getCurrent(city).subscribe((data) => {
 			this.weather = data;
 			console.log(this.weather);
+			this.dataFromWeatherApi.emit(this.weather);
 		});
 	}
 }
