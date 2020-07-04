@@ -1,10 +1,4 @@
-<div
-  *ngIf="weather.current"
-  class="container"
-  gdColumns="repeat(2,1fr)"
-  gdGap="10px"
-  gdColumns.lt-sm="1fr"
->
+<div *ngIf="weather.current" class="container" gdColumns="repeat(2,1fr)" gdGap="10px" gdColumns.lt-sm="1fr">
   <div class="box">
     <h1 class="city">
       {{ weather.location.name }}, {{ weather.location.country }}
@@ -16,7 +10,7 @@
 
     <div class="current-weather" fxLayout>
       <figure fxFlex="50">
-        <div><img src="{{ weather.current.weather_icons[0] }}" /></div>
+        <div><span class="iconify" attr.data-icon="{{ weather_icon }}"></span></div>
       </figure>
       <div class="current" fxFlex="50">
         <h1>{{ weather.current.temperature }}°C</h1>
