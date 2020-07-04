@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { getSunrise, getSunset } from 'sunrise-sunset-js';
 import { weatherIcons } from 'src/app/weather-icons/weather-icons';
+import { ViewEncapsulation } from '@angular/core';
 
 @Component({
 	selector: 'app-root',
 	templateUrl: './app.component.html',
-	styleUrls: [ './app.component.scss' ]
+	styleUrls: [ './app.component.scss' ],
+	encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
 	constructor(private datePipe: DatePipe) {}
@@ -35,7 +37,17 @@ export class AppComponent {
 		let sunrise = getSunrise(latitude, longitude).getTime();
 
 		let time = currentTime >= sunrise && currentTime < sunset ? 'day' : 'night';
+		this.setBackgroundColor(time);
+
 		let icon = this.iconsList[code][time];
 		return icon;
+	}
+
+	setBackgroundColor(time: string): void {
+		let removeClass = time == 'day' ? 'night' : 'day';
+		let body = document.querySelector('body');
+
+		body.classList.remove(removeClass);
+		body.classList.add(time);
 	}
 }

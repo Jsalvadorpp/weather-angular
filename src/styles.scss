@@ -8,5 +8,15 @@ body {
 body {
 	margin: 0;
 	font-family: Roboto, "Helvetica Neue", sans-serif;
-	background-color: #89a7ef;
+	background: rgb(120, 163, 226);
+	background: linear-gradient(180deg, rgba(120, 163, 226, 1) 1%, rgba(71, 213, 210, 0.8267506831834296) 89%);
+	transition: all 1.2s ease-in;
+}
+.day {
+	background: rgb(120, 163, 226);
+	background: linear-gradient(180deg, rgba(120, 163, 226, 1) 1%, rgba(71, 213, 210, 0.8267506831834296) 89%);
+}
+.night {
+	background: rgb(98, 75, 152);
+	background: linear-gradient(180deg, rgba(98, 75, 152, 1) 1%, rgba(31, 30, 30, 0.975210066936931) 95%);
 }
