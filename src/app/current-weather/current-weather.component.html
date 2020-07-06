@@ -9,8 +9,8 @@
     </div>
 
     <div class="current-weather" fxLayout>
-      <figure fxFlex="50" class='icon-wrapper'>
-        <span class="iconify" attr.data-icon="{{ weather_icon }}"></span>
+      <figure fxFlex="50">
+        <span class="iconify wi {{ weather_icon }}"></span>
       </figure>
       <div class="current" fxFlex="50">
         <h1>{{ weather.main.temp | stringToInt }}°C</h1>
