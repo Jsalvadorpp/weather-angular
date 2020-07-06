@@ -1,43 +1,43 @@
-<div *ngIf="weather.current" class="container" gdColumns="repeat(2,1fr)" gdGap="10px" gdColumns.lt-sm="1fr">
+<div *ngIf="weather.main" class="container" gdColumns="repeat(2,1fr)" gdGap="10px" gdColumns.lt-sm="1fr">
   <div class="box">
     <h1 class="city">
-      {{ weather.location.name }}, {{ weather.location.country }}
+      {{ weather.name }}, {{ weather.sys.country }}
     </h1>
     <div class="date-wrapper" fxLayout fxLayoutAlign="space-between">
-      <h3>{{ weather.location.localtime | date: "EEEE d LLLL" }}</h3>
-      <h3>{{ weather.location.localtime | date: "h:mm a" }}</h3>
+      <h3>{{ weather.dt | date: "EEEE d LLLL" }}</h3>
+      <h3>{{ weather.dt | date: "h:mm a"}}</h3>
     </div>
 
     <div class="current-weather" fxLayout>
-      <figure fxFlex="50">
-        <div><span class="iconify" attr.data-icon="{{ weather_icon }}"></span></div>
+      <figure fxFlex="50" class='icon-wrapper'>
+        <span class="iconify" attr.data-icon="{{ weather_icon }}"></span>
       </figure>
       <div class="current" fxFlex="50">
-        <h1>{{ weather.current.temperature }}°C</h1>
-        <h3>{{ weather.current.weather_descriptions[0] }}</h3>
+        <h1>{{ weather.main.temp | stringToInt }}°C</h1>
+        <h3>{{ weather.weather[0].main }}</h3>
       </div>
     </div>
   </div>
 
   <div class="weather-wrapper box" gdColumns="repeat(2,1fr)" gdGap="10px">
     <div class="stat">
-      <h1>{{ weather.current.humidity }}%</h1>
+      <h1>{{ weather.main.humidity }}%</h1>
       <h3>Humidity</h3>
     </div>
 
     <div class="stat">
-      <h1>{{ weather.current.feelslike }}°C</h1>
+      <h1>{{ weather.main.feels_like | stringToInt }}°C</h1>
       <h3>Feels like</h3>
     </div>
 
     <div class="stat">
-      <h1>{{ weather.current.precip }}%</h1>
-      <h3>Precipitation"</h3>
+      <h1>{{ weather.main.temp_min | stringToInt }}°C</h1>
+      <h3>Min temperature</h3>
     </div>
 
     <div class="stat">
-      <h1>{{ weather.current.wind_speed }} km/h</h1>
-      <h3>Wind speed</h3>
+      <h1>{{ weather.main.temp_max | stringToInt }}°C</h1>
+      <h3>Max temperature</h3>
     </div>
   </div>
 </div>
