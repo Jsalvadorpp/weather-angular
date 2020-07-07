@@ -40,8 +40,11 @@ export class SearchCityComponent implements OnInit {
 	searchCity(city: string = this.city): void {
 		this.weatherService.getCurrent(city).subscribe((data) => {
 			this.weather = data;
-			console.log(this.weather);
+			//console.log(this.weather);
 			this.dataFromWeatherApi.emit(this.weather);
+		});
+		this.weatherService.getForecast(city).subscribe((data) => {
+			console.log(data);
 		});
 	}
 }

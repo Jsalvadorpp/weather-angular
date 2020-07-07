@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root'
@@ -14,5 +16,17 @@ export class WeatherService {
 		let q = city;
 		let url = `${this.apiUrl}/weather?appid=${this.acessKey}&q=${q}&units=metric`;
 		return this.httpClient.get(url);
+	}
+
+	getForecast(city: string): Observable<any> {
+		let q = city;
+		let url = `${this.apiUrl}/forecast?appid=${this.acessKey}&q=${q}&units=metric`;
+		return this.httpClient.get<any>(url).pipe(
+			map((res) =>
+				res.list.filter((object, index) => {
+					return (index + 2) % 8 === 0;
+				})
+			)
+		);
 	}
 }
