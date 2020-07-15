@@ -1,2 +1,4 @@
-<app-search-city (dataFromWeatherApi)="retrieveData($event)"></app-search-city>
+<app-search-city (dataFromWeatherApi)="retrieveData($event)" (forecastFromWeatherApi)='getForecast($event)'>
+</app-search-city>
 <app-current-weather [weather]="weather" [weather_icon]="weather_icon"></app-current-weather>
+<app-forecast [forecast]="forecast"></app-forecast>

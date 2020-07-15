@@ -15,9 +15,10 @@ import { WeatherService } from './weather.service';
 import { CurrentWeatherComponent } from './current-weather/current-weather.component';
 import { DatePipe } from '@angular/common';
 import { StringToIntPipe } from './customPipes/string-to-int.pipe';
+import { ForecastComponent } from './forecast/forecast.component';
 
 @NgModule({
-  declarations: [AppComponent, SearchCityComponent, CurrentWeatherComponent, StringToIntPipe],
+  declarations: [AppComponent, SearchCityComponent, CurrentWeatherComponent, StringToIntPipe, ForecastComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

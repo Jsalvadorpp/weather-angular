@@ -12,7 +12,9 @@ declare const places: any;
 export class SearchCityComponent implements OnInit {
 	city: string;
 	weather: any = undefined;
+	forecast: any = undefined;
 	@Output() dataFromWeatherApi = new EventEmitter();
+	@Output() forecastFromWeatherApi = new EventEmitter();
 
 	constructor(private weatherService: WeatherService) {}
 
@@ -44,7 +46,8 @@ export class SearchCityComponent implements OnInit {
 			this.dataFromWeatherApi.emit(this.weather);
 		});
 		this.weatherService.getForecast(city).subscribe((data) => {
-			console.log(data);
+			this.forecast = data;
+			this.forecastFromWeatherApi.emit(this.forecast);
 		});
 	}
 }

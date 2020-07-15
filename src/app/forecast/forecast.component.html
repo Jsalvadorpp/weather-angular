@@ -1,0 +1,10 @@
+<div class='forecast-container' gdColumns="repeat(5,1fr)" gdGap="10px">
+  <div *ngFor="let weather of forecast" class='box'>
+    <h3>{{ weather.dt_txt}}</h3>
+    <figure>
+      <span class="iconify wi {{ weather.weather_icon }}"></span>
+    </figure>
+    <h1>{{ weather.main.temp | stringToInt }}°C</h1>
+  </div>
+
+</div>
