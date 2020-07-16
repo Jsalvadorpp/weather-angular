@@ -1,5 +1,5 @@
-<div class='forecast-container' gdColumns="repeat(5,1fr)" gdGap="10px">
-  <div *ngFor="let weather of forecast" class='box'>
+<div class='forecast-container' gdColumns="repeat(4,1fr)" gdGap="30px" gdColumns.lt-sm="repeat(2,1fr)">
+  <div *ngFor=" let weather of forecast" class='box'>
     <h3>{{ weather.dt_txt}}</h3>
     <figure>
       <span class="iconify wi {{ weather.weather_icon }}"></span>

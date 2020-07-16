@@ -43,6 +43,10 @@ export class AppComponent {
 		const fixedTime = newDate - (-local_timezone_offset - weather.timezone) * 1000;
 		this.weather_icon = this.getWeatherIcon(sunset, sunrise, code, this.weather.dt);
 
+		let currentTime = this.weather.dt;
+		let time = currentTime >= sunrise && currentTime < sunset ? 'day' : 'night';
+		this.setBackgroundColor(time);
+
 		this.weather.dt = fixedTime;
 
 		//let currentTime = this.datePipe.transform(weather.location.localtime, 'a');
@@ -59,13 +63,11 @@ export class AppComponent {
 		let sunrise = this.weather.sys.sunrise;
 		let sunset = this.weather.sys.sunset;
 
-		this.forecast = forecast;
+		this.forecast = forecast.slice(0, 4);
 		this.forecast.forEach((e) => {
 			e.dt_txt = this.weekday[new Date(e.dt_txt).getDay()];
 			e.weather_icon = this.getWeatherIcon(sunset, sunrise, e.weather[0].main, this.weather.dt);
 		});
-
-		console.log(this.forecast);
 	}
 
 	getWeatherIcon(sunSet, sunRise, code, currentTime): string {
@@ -75,7 +77,6 @@ export class AppComponent {
 		let sunrise = sunRise;
 
 		let time = currentTime >= sunrise && currentTime < sunset ? 'day' : 'night';
-		this.setBackgroundColor(time);
 
 		let icon = this.iconsList[code][time];
 
