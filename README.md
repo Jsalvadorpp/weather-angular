@@ -1,6 +1,6 @@
 # WeatherAngular
 
-Weather app using angular, [openweathermap](https://openweathermap.org/) api and [Algolia](https://community.algolia.com/places/) places api
+Weather app using angular, [openweathermap](https://openweathermap.org/) api and [Algolia](https://community.algolia.com/places/) places api.
 
 You can see this project live [Here](https://jsalvadorpp.github.io/weather-angular)
 
